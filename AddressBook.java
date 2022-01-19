@@ -1,23 +1,18 @@
 package AddressBook;
 
-import java.util.ArrayList;
-
 import java.util.*;
 
 public class AddressBook {
-    ArrayList<Person> list = new ArrayList<Person>();
-    Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
-
         System.out.println("Welcome to address book ");
         AddressBook addressBook = new AddressBook();
-        System.out.println("Enter details to create contact in address book:");
+        System.out.println("Enter details to create contact in address book: ");
         addressBook.createContact();
     }
 
     public void createContact() {
-        Person details = new Person();
+
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your first name: ");
         String firstName = scanner.nextLine();
         System.out.println("Enter your last name: ");
@@ -34,7 +29,5 @@ public class AddressBook {
         long phoneNumber = scanner.nextLong();
         System.out.println("Enter your email address : ");
         String emailAddress = scanner.next();
-        list.add(details);
-        System.out.println(list);
     }
 }

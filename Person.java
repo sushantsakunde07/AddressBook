@@ -10,7 +10,7 @@ public class Person {
     private long phoneNumber;
     private String emailAddress;
 
-    Person(String firstName,String lastName, String address, String city, String state, int zip, long phoneNumber, String emailAddress){
+    Person(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String emailAddress){
         this.firstName=firstName;
         this.lastName=lastName;
         this.address=address;

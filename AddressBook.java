@@ -11,8 +11,32 @@ public class AddressBook {
         System.out.println("Welcome to address book ");
         AddressBook addressBook = new AddressBook();
         System.out.println("Enter details to create contact in address book:");
-        addressBook.createContact();
-        addressBook.editContact();
+
+        int number=1;
+        while(number==1){
+            System.out.println("1.Add Contact"+"2.Edit Contact"+"3.Delete Contact"+"4. Exit");
+            Scanner sc = new Scanner(System.in);
+            int choice=sc.nextInt();
+            if(choice==1){
+                addressBook.createContact();
+            }
+            else if (choice==2){
+                addressBook.editContact();
+            }
+            else if (choice==3){
+                addressBook.deleteContact();
+            }
+            else if (choice==4){
+               number=2;
+               break;
+            }
+            else{
+                System.out.println("Enter Valid Option");
+            }
+        }
+
+
+
     }
 
     public void createContact() {

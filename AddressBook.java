@@ -16,7 +16,6 @@ public class AddressBook {
     }
 
     public void createContact() {
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your first name: ");
         String firstName = scanner.nextLine();
@@ -85,5 +84,14 @@ public class AddressBook {
             System.out.println("Edited list is ");
             System.out.println(this.list);
         }
+    }
+
+    public void deleteContact() {
+        System.out.println("confirm the name to delete contact");
+        String confirmName = this.scanner.next();
+        if (((Person) this.list.get(0)).getFirstName().equals(confirmName)) {
+        }
+        this.list.remove(0);
+        System.out.println(this.list);
     }
 }

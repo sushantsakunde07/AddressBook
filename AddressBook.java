@@ -11,111 +11,122 @@ public class AddressBook {
         System.out.println("Welcome to address book ");
         AddressBook addressBook = new AddressBook();
         System.out.println("Enter details to create contact in address book:");
+        System.out.println("Enter number of persons to add in adressbook");
+        Scanner scan1 = new Scanner(System.in);
 
-        int number=1;
-        while(number==1){
-            System.out.println("1.Add Contact"+"2.Edit Contact"+"3.Delete Contact"+"4. Exit");
-            Scanner sc = new Scanner(System.in);
-            int choice=sc.nextInt();
-            if(choice==1){
-                addressBook.createContact();
-            }
-            else if (choice==2){
-                addressBook.editContact();
-            }
-            else if (choice==3){
-                addressBook.deleteContact();
-            }
-            else if (choice==4){
-               number=2;
-               break;
-            }
-            else{
-                System.out.println("Enter Valid Option");
+
+        int number = 1;
+        for (int i = 0; i < 4; i++) {
+            while (number == 1) {
+                System.out.println("1.Add Contact" + "2.Edit Contact" + "3.Delete Contact" + "4. Exit");
+                Scanner sc = new Scanner(System.in);
+                int choice = sc.nextInt();
+                if (choice == 1) {
+                    addressBook.createContact();
+                } else if (choice == 2) {
+                    addressBook.editContact();
+                } else if (choice == 3) {
+                    addressBook.deleteContact();
+                } else if (choice == 4) {
+                    number = 2;
+                    break;
+                } else {
+                    System.out.println("Enter Valid Option");
+                }
             }
         }
-
-
-
     }
 
     public void createContact() {
-        Scanner scanner = new Scanner(System.in);
+        Person details = new Person();
         System.out.println("Enter your first name: ");
-        String firstName = scanner.nextLine();
+        details.setFirstName(scanner.nextLine());
         System.out.println("Enter your last name: ");
-        String lastName = scanner.nextLine();
+        details.setLastName(scanner.nextLine());
         System.out.println("Enter your address : ");
-        String address = scanner.nextLine();
+        details.setAddress(scanner.nextLine());
         System.out.println("Enter your city name: ");
-        String city = scanner.nextLine();
+        details.setCity(scanner.nextLine());
         System.out.println("Enter your state name: ");
-        String state = scanner.nextLine();
+        details.setState(scanner.nextLine());
         System.out.println("Enter your zip code: ");
-        int zipcode = scanner.nextInt();
+        details.setZip(scanner.nextInt());
         System.out.println("Enter your phone number: ");
-        long phoneNumber = scanner.nextLong();
+        details.setPhoneNumber(scanner.nextLong());
         System.out.println("Enter your email address : ");
-        String emailAddress = scanner.next();
+        details.setEmailAddress(scanner.nextLine());
+        list.add(details);
+        showAllContact();
     }
+    public void showAllContact() {
+        if (list.isEmpty()) {
+            System.out.println("---> PhoneBook is empty:");
+        } else {
+            for (Person person : list) {
+                System.out.println(person);
+            }
+        }
+    }
+
 
     public void editContact() {
         System.out.println("Enter Name for Edit");
-        String editName = this.scanner.next();
+        String editName = this.scanner.nextLine();
 
         for (int i = 0; i < this.list.size(); ++i) {
-            if (((Person) this.list.get(i)).getFirstName().equals(editName)) {
+            System.out.println("hello");
+            if ((list.get(i)).getFirstName().equals(editName)) {
                 System.out.println("Select Options");
                 System.out.println("1: First Name\n 2:Last Name\n 3:Address\n 4:City Name\n 5:State Name\n 6: Zip Code\n 7:Phone Number\n 8:Email Address");
                 int option = this.scanner.nextInt();
                 switch (option) {
                     case 1:
                         System.out.println("Enter first name");
-                        ((Person) this.list.get(i)).setFirstName(this.scanner.next());
+                        list.get(i).setFirstName(this.scanner.nextLine());
                         break;
                     case 2:
                         System.out.println("Enter last name");
-                        ((Person) this.list.get(i)).setLastName(this.scanner.next());
+                        list.get(i).setLastName(this.scanner.nextLine());
                         break;
                     case 3:
                         System.out.println("Enter address");
-                        ((Person) this.list.get(i)).setAddress(this.scanner.next());
+                        list.get(i).setAddress(this.scanner.nextLine());
                         break;
                     case 4:
                         System.out.println("Enter city");
-                        ((Person) this.list.get(i)).setCity(this.scanner.next());
+                        list.get(i).setCity(this.scanner.nextLine());
                         break;
                     case 5:
                         System.out.println("Enter state");
-                        ((Person) this.list.get(i)).setState(this.scanner.next());
+                        list.get(i).setState(this.scanner.nextLine());
                         break;
                     case 6:
                         System.out.println("Enter Zip Code");
-                        ((Person) this.list.get(i)).setZip(this.scanner.nextInt());
+                        list.get(i).setZip(this.scanner.nextInt());
                         break;
                     case 7:
                         System.out.println("Enter Phone Number");
-                        ((Person) this.list.get(i)).setPhoneNumber(this.scanner.nextLong());
+                        list.get(i).setPhoneNumber(this.scanner.nextLong());
                         break;
                     case 8:
                         System.out.println("Enter Email Address");
-                        ((Person) this.list.get(i)).setEmailAddress(this.scanner.nextLine());
+                        list.get(i).setEmailAddress(this.scanner.nextLine());
                         break;
                     default:
                         System.out.println("Enter valid name");
                 }
             }
-            System.out.println("Edited list is ");
-            System.out.println(this.list);
         }
+        System.out.println("Edited list is ");
+        showAllContact();
     }
 
     public void deleteContact() {
         System.out.println("confirm the name to delete contact");
-        String confirmName = this.scanner.next();
-        if (((Person) this.list.get(0)).getFirstName().equals(confirmName)) {
+        String confirmName = this.scanner.nextLine();
+        if (list.get(0).getFirstName().equals(confirmName)) {
         }
         this.list.remove(0);
-        System.out.println(this.list);
+        showAllContact();
     }
 }

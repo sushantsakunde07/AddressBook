@@ -97,7 +97,7 @@ public class Person {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip=" + zip +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber=" + phoneNumber  +
                 ", emailAddress='" + emailAddress + '\'' +
                 '}';
     }
